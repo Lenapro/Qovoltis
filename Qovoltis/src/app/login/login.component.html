@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-sm-4 shadow">
+                <form class="example-form" method="POST">
+                    <div class="form-group"> 
+                        <mat-form-field class="example-full-width">
+                            <mat-label><b>Email</b></mat-label>
+                            <input type="email" matInput [formControl]="emailFormControl"
+                                placeholder="Ex. pat@example.com" name="email" [(ngModel)]="user.email">
+                        </mat-form-field>
+                        <mat-error *ngIf="email==false ">
+                            <p class="text-center text-danger">email incorrect </p>
+                        </mat-error>
+
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="form-group" style="width: 100%;">
+                            <mat-label><b>Mon mot de passe</b></mat-label>
+                            <input matInput class="display-4 " style="font-size: 20px; font-weight:500;"
+                                [type]="hide ? 'password' : 'text'" name="password"
+                                pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                                title="8 charactères au moins avec une lettre majuscule, une minuscule et des chiffres"
+                                maxlength="15" autocomplete="off" [(ngModel)]="user.password">
+                            <button class="topbtn" mat-icon-button matSuffix (click)="hide = !hide"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon style="font-size: 20px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-error *ngIf="password==false">
+                            <p class="text-center text-danger">Mot de passe incorrect!!</p>
+                        </mat-error>
+
+                    </div>
+                    <button mat-raised-button color="primary" type="submit" (click)='login()'>Connexion</button>
+                    <br>
+                    <div class="J">
+                        <a href="Renitialiser_MotDePasse">Mot de passe oublié ?</a><br>
+                    </div>
+                    <div class="A"></div>
+                    <a mat-raised-button href="/inscription" target="_blank"><strong>Créer un compte</strong></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
